@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+<script>
+var milli = 1500000; // default is 25 minutes
+
+function milli2minsec(milli) {
+  const d = new Date(Date.UTC(0,0,0,0,0,0,milli)),
+  parts = [
+    d.getUTCHours(),
+    d.getUTCMinutes(),
+    d.getUTCSeconds()
+  ],
+  formatted = parts.map(s => String(s).padStart(2,'0')).join(':');
+  return formatted;
+}
+
+function setTimer() {
+  milli = document.getElementById('pomodoro').value * 60000;
+  displayTimer(milli);
+}
+
+function updateTimer() {
+  if (milli > 0){
+    milli -= 1000;
+    displayTimer(milli);
+  } else {
+    switchTimer()
+  }
+}
+
+function switchTimer() {
+  document.getElementById("timer").innerHTML = "Done"
+}
+
+function displayTimer(milli){
+  document.getElementById("timer").innerHTML = milli2minsec(milli)
+}
+
+</script>
+</head>
+
+<h2>Pomodoro Timer</h2>
+
+
+<label for="pomodoro">Pomodoro:</label><br>
+<input type="number" id="pomodoro" min="1" max="8640" value="25">
+<button onclick="setTimer()">Submit</button>
+
+<p id="timer"></p>
+
+<button onclick="myVar = setInterval(updateTimer, 1000)">Start</button>
+
+<button onclick="clearInterval(myVar)">Stop</button>
+
+</body>
+</html>
+
