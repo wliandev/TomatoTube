@@ -2,8 +2,19 @@
 <html>
 <body>
 <head>
+<style>
+
+body {
+  background-color: Linen;
+}
+
+</style>
 <script>
-var milli = 1500000; // default is 25 minutes
+
+var pomodoro = 1500000; // default is 25 minutes
+var breaktime = 300000; // default is 5 minutes
+var time = pomodoro; // default is pomodoro
+var working = 1
 
 function milli2minsec(milli) {
   const d = new Date(Date.UTC(0,0,0,0,0,0,milli)),
@@ -17,25 +28,50 @@ function milli2minsec(milli) {
 }
 
 function setTimer() {
-  milli = document.getElementById('pomodoro').value * 60000;
-  displayTimer(milli);
+  pomodoro = document.getElementById('pomodoro').value * 60000;
+  breaktime = document.getElementById('short break').value * 60000;
+  time = pomodoro;
+  displayTimer(time);
 }
 
 function updateTimer() {
-  if (milli > 0){
-    milli -= 1000;
-    displayTimer(milli);
+  if (time > 0){
+    time -= 1000;
+    displayTimer(time);
   } else {
-    switchTimer()
+    switchTimer();
   }
 }
 
 function switchTimer() {
-  document.getElementById("timer").innerHTML = "Done"
+  working *= -1; 
+  playSound();
+  if (working === -1) { 
+    time = breaktime; 
+  } else {
+    time = pomodoro;
+  }
+  displayTimer(time)
 }
 
-function displayTimer(milli){
-  document.getElementById("timer").innerHTML = milli2minsec(milli)
+function displayTimer(time) {
+  document.getElementById("timer").innerHTML = milli2minsec(time)
+}
+
+function playSound() {
+  var beep = new Audio('beep.mp3');
+  var count = 1;
+  beep.loop = false;
+  beep.play()
+  beep.addEventListener('ended', function() {
+    this.currentTime = 0;
+    if (count <= 2) {
+      this.play();
+    } else {
+      this.pause();
+    }
+    count++;
+  }, false);
 }
 
 </script>
@@ -45,14 +81,16 @@ function displayTimer(milli){
 
 
 <label for="pomodoro">Pomodoro:</label><br>
-<input type="number" id="pomodoro" min="1" max="8640" value="25">
-<button onclick="setTimer()">Submit</button>
+<input type="number" id="pomodoro" min="1" max="8640" value="25"><br><br>
+<label for="short break">Short Break:</label><br>
+<input type="number" id="short break" min="1" max="8640" value="5"><br><br>
+<button onclick="setTimer()">OK</button>
 
-<p id="timer"></p>
+<p id="timer">00:25:00</p>
 
 <button onclick="myVar = setInterval(updateTimer, 1000)">Start</button>
 
-<button onclick="clearInterval(myVar)">Stop</button>
+<button onclick="clearInterval(myVar)">Pause</button>
 
 </body>
 </html>
