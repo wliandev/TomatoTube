@@ -1,155 +1,38 @@
 <!DOCTYPE html>
 <html>
-<body>
 <head>
-<style>
-
-body {
-  background-color: Tomato;
-  text-align: center;
-}
-
-.settings-popup {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left:  50%;
-  transform: translate(-50%, -50%);
-}
-
-.settings-container {
-  max-width: 400px;
-  padding: 25px;
-  background-color: white;
-}
-
-.cover {
-  background-color:black;
-  opacity:  0.25;
-  width:100%;
-  height:100%;
-  display:none;
-  position:fixed;
-  top:0;
-  left:0;
-}
-
-.timer {
-  font-size: 70px;
-  padding-top: 25px;
-  padding-bottom: 25px;
-}
-
-</style>
-<script>
-
-var pomodoro = 1500000; // default is 25 minutes
-var shortbreak = 300000; // default is 5 minutes
-var longbreak = 900000; // default is 15 minutes
-var time = pomodoro; // default is pomodoro
-var working = 1
-
-function milli2minsec(milli) {
-  const d = new Date(Date.UTC(0,0,0,0,0,0,milli)),
-  parts = [
-    d.getUTCHours(),
-    d.getUTCMinutes(),
-    d.getUTCSeconds()
-  ],
-  formatted = parts.map(s => String(s).padStart(2,'0')).join(':');
-  return formatted;
-}
-
-function setTimer() {
-  pomodoro = document.getElementById('pomodoro').value * 60000;
-  shortbreak = document.getElementById('short break').value * 60000;
-  longbreak = document.getElementById('long break').value * 60000;
-  time = pomodoro;
-  displayTimer(time);
-}
-
-function updateTimer() {
-  if (time > 0){
-    time -= 1000;
-    displayTimer(time);
-  } else {
-    switchTimer();
-  }
-}
-
-function switchTimer() {
-  working *= -2; 
-  playSound();
-  if (working === -32) { 
-    time = longbreak;
-    working = -.5
-  } else if (working < 0) {
-    time = shortbreak;
-  } else {
-    time = pomodoro;
-  }
-  displayTimer(time)
-}
-
-function displayTimer(time) {
-  document.getElementById("timer").innerHTML = milli2minsec(time)
-}
-
-function playSound() {
-  var beep = new Audio('beep.mp3');
-  var count = 1;
-  beep.loop = false;
-  beep.play()
-  beep.addEventListener('ended', function() {
-    this.currentTime = 0;
-    if (count <= 2) {
-      this.play();
-    } else {
-      this.pause();
-    }
-    count++;
-  }, false);
-}
-
-function openSettings() {
-  document.getElementById("mySettings").style.display = "block";
-  document.getElementById("cover").style.display = "block";
-}
-
-function closeSettings() {
-  setTimer();
-  document.getElementById("mySettings").style.display = "none";
-  document.getElementById("cover").style.display = "none";
-}
-
-</script>
+   <link rel="stylesheet" href="style.css"> 
 </head>
+<body>
+  <script src="main.js"></script>
+  <div class="cover" id="cover"></div>
 
-<div class="cover" id="cover"></div>
+  <h1>Pomodoro Timer</h1>
 
-<h2>Pomodoro Timer</h2>
+  <button class="settings-button" onclick="openSettings()">Settings</button><br><br><br><br> <!-- not neat -->
 
-<button class="settings" onclick="openSettings()">Settings</button>
+   <hr>
 
-<div class="settings-popup" id="mySettings">
-  <div class="settings-container">
-    <h2>Settings</h2>
-    <label for="pomodoro">Pomodoro:</label><br>
-    <input type="number" id="pomodoro" min="1" max="8640" value="25"><br><br>
-    <label for="short break">Short Break:</label><br>
-    <input type="number" id="short break" min="1" max="8640" value="5"><br><br>
-    <label for="long break">Long Break:</label><br>
-    <input type="number" id="long break" min="1" max="8640" value="15"><br><br>
-    <button onclick="closeSettings()">OK</button>
+  <div class="settings-popup" id="mySettings">
+    <div class="settings-container">
+      <button class="x-button" onclick="closeSettings()"></button><br>
+      <h2>Settings</h2>
+      <label for="pomodoro">Pomodoro:</label><br>
+      <input type="number" id="pomodoro" min="1" max="8640" value="25"><br><br>
+      <label for="short break">Short Break:</label><br>
+      <input type="number" id="short break" min="1" max="8640" value="5"><br><br>
+      <label for="long break">Long Break:</label><br>
+      <input type="number" id="long break" min="1" max="8640" value="15"><br><br>
+      <button class="ok-button" onclick="setTimer()">OK</button>
+    </div>
   </div>
-</div>
 
-<div class="timer" id="timer">00:25:00</div>
+  <div class="timer" id="timer">00:25:00</div>
 
-<button onclick="myVar = setInterval(updateTimer, 1000)">Start</button>
+  <button class="start-button" onclick="myVar = setInterval(updateTimer, 1000)">Start</button>
 
-<button onclick="clearInterval(myVar)">Pause</button>
+  <button class="pause-button" onclick="clearInterval(myVar)">Pause</button>
 
-</body>
+  </body>
 </html>
 
