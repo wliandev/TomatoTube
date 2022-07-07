@@ -27,11 +27,12 @@
     </div>
   </div>
 
+  <h3 id="status">Pomodoro</h3>
   <div class="timer" id="timer">00:25:00</div>
 
-  <button class="start-button" onclick="myVar = setInterval(updateTimer, 1000)">Start</button>
-
-  <button class="pause-button" onclick="clearInterval(myVar)">Pause</button>
+  <button class="skip-button" id="back" onclick="goBack()"><</button>
+  <button class="start-button" id="start" onclick="startTimer()">Start</button>
+  <button class="skip-button" id="skip" onclick="skipForward()">></button>
 
   </body>
 </html>

@@ -8,6 +8,10 @@ h2 {
 
 }
 
+h3 {
+
+}
+
 hr {
   color: lightgrey;
   margin: 15px;
@@ -23,7 +27,7 @@ body {
 button {
   border: none;
   border-radius: 5px;
-  color: black;
+  color: grey;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -32,19 +36,19 @@ button {
 }
 
 button:hover {
-  color:  white;
+  color:  black;
   cursor: pointer;
 }
 
 .settings-button {
   background-color: lightgrey;
+  color: grey;
   float: right;
   margin: 15px;
 }
 
 .settings-button:hover {
-  color:  white;
-  cursor: pointer;
+
 }
 
 .settings-popup {
@@ -75,17 +79,24 @@ button:hover {
 
 .timer {
   font-size: 100px;
-  padding-top: 25px;
   padding-bottom: 25px;
   color:  black;
 }
 
 .start-button {
+  color: white;
   background-color: lightgreen;
+  width: 200px;
 }
 
 .pause-button {
+  color: white;
   background-color: tomato;
+  width: 200px;
+}
+
+.skip-button {
+  background-color: lightgrey;
 }
 
 .x-button {
@@ -105,4 +116,10 @@ button:hover {
 
 .ok-button {
   background-color: lightgrey;
+  color: black;
+}
+
+.ok-button:hover {
+  background-color: grey;
+  color: white;
 }

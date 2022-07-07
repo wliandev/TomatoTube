@@ -2,7 +2,8 @@ var pomodoro = 1500000; // default is 25 minutes
 var shortbreak = 300000; // default is 5 minutes
 var longbreak = 900000; // default is 15 minutes
 var time = pomodoro; // default is pomodoro
-var working = 1
+var working = 1;
+var myTimer;
 
 function milli2minsec(milli) {
   const d = new Date(Date.UTC(0,0,0,0,0,0,milli)),
@@ -25,6 +26,39 @@ function setTimer() {
   document.getElementById("cover").style.display = "none";
 }
 
+function startTimer() {
+  document.getElementById("start").innerHTML = "Pause"
+  document.getElementById("start").classList.remove('start-button');
+  document.getElementById("start").classList.add('pause-button');
+  document.getElementById("start").onclick = stopTimer;
+  document.getElementById("start").id = "pause";
+  myTimer = setInterval(updateTimer, 1000);
+}
+
+function stopTimer() {
+  document.getElementById("pause").innerHTML = "Start"
+  document.getElementById("pause").classList.remove('pause-button');
+  document.getElementById("pause").classList.add('start-button');
+  document.getElementById("pause").onclick = startTimer;
+  document.getElementById("pause").id = "start";
+  clearInterval(myTimer);
+}
+
+function goBack() {
+  if (working === -.5) { 
+    time = longbreak;
+  } else if (working < 0) {
+    time = shortbreak;
+  } else {
+    time = pomodoro;
+  }
+  displayTimer(time)
+}
+
+function skipForward() {
+  switchTimer();
+}
+
 function updateTimer() {
   if (time > 0){
     time -= 1000;
@@ -39,11 +73,14 @@ function switchTimer() {
   playSound();
   if (working === -32) { 
     time = longbreak;
+    document.getElementById("status").innerHTML = "Long Break"
     working = -.5
   } else if (working < 0) {
     time = shortbreak;
+    document.getElementById("status").innerHTML = "Short Break"
   } else {
     time = pomodoro;
+    document.getElementById("status").innerHTML = "Pomodoro"
   }
   displayTimer(time)
 }
