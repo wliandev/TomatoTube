@@ -11,19 +11,21 @@
 
   <button class="settings-button" onclick="openSettings()">Settings</button><br><br><br><br> <!-- not neat -->
 
-   <hr>
+  <hr>
 
   <div class="settings-popup" id="mySettings">
     <div class="settings-container">
       <button class="x-button" onclick="closeSettings()"></button><br>
       <h2>Settings</h2>
-      <label for="pomodoro">Pomodoro:</label><br>
-      <input type="number" id="pomodoro" min="1" max="8640" value="25"><br><br>
-      <label for="short break">Short Break:</label><br>
-      <input type="number" id="short break" min="1" max="8640" value="5"><br><br>
-      <label for="long break">Long Break:</label><br>
-      <input type="number" id="long break" min="1" max="8640" value="15"><br><br>
-      <button class="ok-button" onclick="setTimer()">OK</button>
+        <label for="pomodoro">Pomodoro:</label><br>
+        <input type="number" id="pomodoro" min="1" max="8640" value="25"><br><br>
+        <label for="short break">Short Break:</label><br>
+        <input type="number" id="short break" min="1" max="8640" value="5"><br><br>
+        <label for="long break">Long Break:</label><br>
+        <input type="number" id="long break" min="1" max="8640" value="15"><br><br>
+        <label for="interval">Long Break Interval:</label><br>
+        <input type="number" id="interval" min="1" max="99" value="3"><br><br>
+        <button class="ok-button" onclick="setTimer()">OK</button>
     </div>
   </div>
 

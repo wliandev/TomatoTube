@@ -2,10 +2,12 @@ var pomodoro = 1500000; // default is 25 minutes
 var shortbreak = 300000; // default is 5 minutes
 var longbreak = 900000; // default is 15 minutes
 var time = pomodoro; // default is pomodoro
-var working = 1;
+var interval = 3; // default long break interval is after 3 pomodoros
+var working = 2;
 var myTimer;
+var beep = new Audio('beep.mp3');
 
-function milli2minsec(milli) {
+function milli2minsec(milli) { 
   const d = new Date(Date.UTC(0,0,0,0,0,0,milli)),
   parts = [
     d.getUTCHours(),
@@ -20,7 +22,8 @@ function setTimer() {
   pomodoro = document.getElementById('pomodoro').value * 60000;
   shortbreak = document.getElementById('short break').value * 60000;
   longbreak = document.getElementById('long break').value * 60000;
-  time = pomodoro;
+  interval = document.getElementById('interval').value;
+  goBack();
   displayTimer(time);
   document.getElementById("mySettings").style.display = "none";
   document.getElementById("cover").style.display = "none";
@@ -56,6 +59,7 @@ function goBack() {
 }
 
 function skipForward() {
+  beep.pause();
   switchTimer();
 }
 
@@ -71,10 +75,11 @@ function updateTimer() {
 function switchTimer() {
   working *= -2; 
   playSound();
-  if (working === -32) { 
+  var power = interval * 2
+  if (working === -Math.pow(2,power)) { 
     time = longbreak;
     document.getElementById("status").innerHTML = "Long Break"
-    working = -.5
+    working = -1
   } else if (working < 0) {
     time = shortbreak;
     document.getElementById("status").innerHTML = "Short Break"
@@ -90,7 +95,6 @@ function displayTimer(time) {
 }
 
 function playSound() {
-  var beep = new Audio('beep.mp3');
   var count = 1;
   beep.loop = false;
   beep.play()
