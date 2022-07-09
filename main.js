@@ -18,6 +18,18 @@ function milli2minsec(milli) {
   return formatted;
 }
 
+function milli2percent(milli) {
+  var percent = "";
+  if (working === -.5) { 
+    percent = (longbreak-milli)/longbreak;
+  } else if (working < 0) {
+    percent = (shortbreak-milli)/shortbreak;
+  } else {
+    percent = (pomodoro-milli)/pomodoro;
+  }
+  return (percent*100).toString() + "%";
+}
+
 function setTimer() {
   pomodoro = document.getElementById('pomodoro').value * 60000;
   shortbreak = document.getElementById('short break').value * 60000;
@@ -70,6 +82,7 @@ function updateTimer() {
   } else {
     switchTimer();
   }
+  updateProgress();
 }
 
 function switchTimer() {
@@ -87,10 +100,10 @@ function switchTimer() {
     time = pomodoro;
     document.getElementById("status").innerHTML = "Pomodoro"
   }
-  displayTimer(time)
+  displayTimer()
 }
 
-function displayTimer(time) {
+function displayTimer() {
   document.getElementById("timer").innerHTML = milli2minsec(time)
 }
 
@@ -109,12 +122,7 @@ function playSound() {
   }, false);
 }
 
-function openSettings() {
-  document.getElementById("mySettings").style.display = "block";
-  document.getElementById("cover").style.display = "block";
-}
-
-function closeSettings() {
-  document.getElementById("mySettings").style.display = "none";
-  document.getElementById("cover").style.display = "none";
+function updateProgress() {
+  percent = milli2percent(time);
+  document.getElementById("progress-bar").style = "width:" + percent;
 }
