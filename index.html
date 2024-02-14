@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TomatoTube</title>
+        <link rel="stylesheet" href="style.css"> 
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <div>
+                <h1>TomatoTube</h1>
+            </div>
+            <div>
+                <ul class="navbar">
+                    <button class="nav" id="help"><li><a href="help.html"><img class="top" src="images/question.png" alt="question mark icon" width="200em"></a></li></button>
+                    <button class="nav" id="help"><li><a href="about.html"><img class="top" src="images/info.png" alt="information icon" width="200em"></a></li></button>
+                    <button class="nav" id="help"><li><a href="index.html"><img class="top" src="images/home.png" alt="home icon" width="200em"></a></li></button>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="focus-container">
+                <div id="focus-player"></div>
+                <div class="mask" id="focus-mask"></div>
+                <div class="drect">
+                    <img class="drag" src="images/dragdrop.png" alt="drag and drop icon" width="200em">
+                    <p>Input URL below:</p>
+                    <input class = "field" type="text" id="focus-URL" placeholder="URL of video that will play during Pomodoro"><br>
+                    <button class="submit" id="submit-focus" onclick="submitFocusURL()">Submit</button>
+                </div>
+            </div>
+            <div class="break-container">
+                <div id="break-player"></div>
+                <div class="mask" id="break-mask"></div>
+                <div class="drect">
+                    <img class="drag" src="images/dragdrop.png" alt="drag and drop icon" width="200em">
+                    <p>Input URL below:</p>
+                    <input class = "field" type="text" id="break-URL" placeholder="URL of video that will play during the breaks"><br>
+                    <button class="submit" id="submit-break" onclick="submitBreakURL()">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pomodoro">
+            <div class="wrect">
+                <button class="subsession" id="pomodoro-button" style="background-color: #E8E8E8;" onclick="choosePomodoro()">Pomodoro</button>
+                <button class="subsession" id="shortbreak-button" onclick="chooseShortBreak()">Short Break</button>
+                <button class="subsession" id="longbreak-button" onclick="chooseLongBreak()">Long Break</button>
+                <div class="timer" id="timer">00:25:00</div>
+                <button class="start" id="start" onclick="startTimer()">START</button>
+                <button class="skip" id="skip" onclick="skipForward()">></button>
+            </div>
+        </div>
+    </body>
+</html>
+
+<!-- drag drop by Yogi Aprelliyanto from <a href="https://thenounproject.com/browse/icons/term/drag-drop/" target="_blank" title="drag drop Icons">Noun Project</a> (CC BY 3.0) -->
+
+<!-- ToDo: pausing mask, dark mode, alarm, favicon, progress bar, duplicate code, test pick on interval, responsive, url handling, x out of video, drag area, settings
+     ToDo1: counting, resetting, history, tips -->

@@ -1,0 +1,190 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: #BEBEBE;
+}
+body {
+  background-color: #BEBEBE; 
+  font-family: Arial;
+  margin: 0;
+}
+button {
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  display: inline-block;
+}
+button:hover {
+  cursor: pointer;
+}
+button.subsession {
+  height: 2em;
+  width: 25%;
+  color: black;
+  background-color:	#ffffff;
+  font-size: 1.5em;
+  margin: 1em 1em 0em 0em;
+}
+button.start {
+  height: 2em;
+  color: white;
+  font-weight: bold;
+  background-color: #4ADE59;
+  font-size: calc(12px + 1vw);
+  width: 12em;
+}
+button.start:hover {
+  background-color: #3db949;
+}
+button.start:active {
+  background-color: #31923b;
+}
+button.submit {
+  font-size: 1.25em;
+  padding: 0em 1em;
+}
+button.pause {
+  height: 2em;
+  color: white;
+  font-weight: bold;
+  background-color: #FF6347;
+  font-size: calc(12px + 1vw);
+  width: 12em;
+}
+button.pause:hover {
+  background-color: #d1513b;
+}
+button.pause:active {
+  background-color: #b14431;
+}
+button.skip {
+  background-color: lightgrey;
+}
+button.nav {
+  float: right;
+  padding: 0;
+  margin: 1em 1em;
+}
+h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+h2 {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0;
+}
+h3 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+iframe {
+  height: 55vh;
+  width: 100%;
+  visibility: hidden;
+  /* overlay */
+  position: absolute;
+}
+img.drag {
+  width: 10em;
+  padding-top: 8em;
+}
+img.top {
+  width: 4em;
+}
+img.about {
+  margin: 2em .5em;
+}
+p {
+  font-size: 1.5em;
+  margin: .25em;
+}
+ul.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-size: 1.2em;
+}
+ul.navbar li {
+  float: right;
+}
+ul.navbar li a {
+  display: block;
+  color: #000000;
+  padding: 1em 1em;
+}
+.break-container {
+  /* allows overlay */
+  position: relative;
+}
+.content {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.content1 {
+  display: grid;
+  grid-template-columns: auto;
+  padding: 1em;
+}
+.drect {
+  height: 50vh;
+  width: 90%;
+  border-radius: 20px;
+  border-width: 4px;
+  border-style: dashed;
+  margin: 2em;
+  /* for centering */
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+.field {
+  font-size: 1.25em;
+  text-align: center;
+  width: 60%;
+}
+.focus-container {
+  /* allows overlay */
+  position: relative;
+}
+.header {
+  background-color: white;
+  padding: .2em 1em;
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.mask {
+  position: absolute;
+  top:0;
+  right:0;
+  bottom: 20px; /* shorten it a little, why? */
+  left:0;
+  background: black;
+  opacity: 50%;
+  visibility: hidden;
+}
+.pomodoro{
+  text-align: center;
+}
+.progress {
+  margin-top: 35px;
+}
+.timer {
+  font-size: calc(72px + 1vw);
+  font-weight: bold;
+}
+.wrect{
+  height: 27vh;
+  width: 50%;
+  background-color: white;
+  border-radius: 20px;
+  /* for centering */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
