@@ -4,13 +4,12 @@ TomatoTube is a [Pomorodo](https://en.wikipedia.org/wiki/Pomodoro_Technique) tim
 
 ## Motivation
 
-When using the Pomodoro Technique and working with a video playing in the background, pausing or switching videos every 5 to 25 minutes is a hassle. Not wanting to be distracted by having to pause my video or change tabs, I made this website for an automatic and unified Pomodoro experience.  
+When using the Pomodoro Technique and working with a video playing in the background, pausing or switching videos every 5 to 25 minutes is a hassle. Not wanting to be distracted by having to pause my video or change tabs, I made this website for a more automatic and unified Pomodoro experience.  
 
 ## Getting Started
 
-Input two YouTube URLs to get started!
+Paste two YouTube URLs in the input boxes, then click submit and start.
 
 ## Contributing
 
-
-
+Open a Github issue if you find a bug.
